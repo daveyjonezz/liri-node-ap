@@ -1,3 +1,4 @@
+debugger;
 require("dotenv").config();
 var keys = require("./keys.js");
 var fs = require("fs");
@@ -32,6 +33,7 @@ function OMDb(){
     if (!userInput) {
         userInput = "Mr. Nobody"
     }
+     movieQueryUrl = "http://www.omdbapi.com/?t=" + userInput + "&y=&plot=short&apikey=trilogy";
      axios.get(movieQueryUrl).then(
          function (response) {
              console.log("Title: " + response.data.Title);
@@ -66,12 +68,11 @@ function OMDb(){
 }
 
 function Bands(){
+    bandQueryUrl = "https://rest.bandsintown.com/artists/" + userInput + "/events?app_id=codingbootcamp";
     axios.get(bandQueryUrl).then(
         function (responseBand) {
             for (i = 0; i < responseBand.data.length; i++) {
-                console.log(responseBand.data[i].venue.name);
-                console.log(responseBand.data[i].venue.city);
-                console.log(moment(responseBand.data[i].datetime).format("L"));
+                console.log(userInput + " is performing at " + responseBand.data[i].venue.name + " in " + responseBand.data[i].venue.city + " on " + moment(responseBand.data[i].datetime).format("L"));
             }
         }).catch(function (error) {
             console.log(error);
@@ -84,8 +85,7 @@ function SpotifyCall(){
     }
     spotify.search({type: 'track', query: userInput}, function(err, data){
         if (err){
-            console.log('Error occurred: ' + err);
-            return;
+            return
         }
         //Handle Data
         var albumTrack = data.tracks.items;
@@ -116,71 +116,3 @@ function Text(){
 }
 
 switchCall();
-
-// function liri() {
-//     if (command === "movie-this") {
-//        if (!userInput) {
-//            userInput = "Mr. Nobody"
-//        }
-//         axios.get(movieQueryUrl).then(
-//             function (response) {
-//                 console.log("Title: " + response.data.Title);
-//                 console.log("Year: " + response.data.Year);
-//                 console.log("Rated: " + response.data.Rated);
-//                 console.log("Rotton Tomatoes Rating: " + response.data.Ratings[1].Value);
-//                 console.log("Country Produced: " + response.data.Country);
-//                 console.log("Language: " + response.data.Language);
-//                 console.log("Plot: " + response.data.Plot);
-//                 console.log("Actors: " + response.data.Actors);
-//             })
-//             .catch(function (error) {
-//                 console.log(error);
-//             });
-//     } else if (command === "concert-this") {
-//         axios.get(bandQueryUrl).then(
-//             function (responseBand) {
-//                 for (i = 0; i < responseBand.data.length; i++) {
-//                     console.log(responseBand.data[i].venue.name);
-//                     console.log(responseBand.data[i].venue.city);
-//                     console.log(moment(responseBand.data[i].datetime).format("L"));
-//                 }
-//             }).catch(function (error) {
-//                 console.log(error);
-//             });
-//     } else if (command === "spotify-this-song") {
-//         if (!userInput){
-//             userInput = 'The Sign';
-//         }
-//         spotify.search({type: 'track', query: userInput}, function(err, data){
-//             if (err){
-//                 console.log('Error occurred: ' + err);
-//                 return;
-//             }
-//             //Handle Data
-//             var albumTrack = data.tracks.items;
-    
-//             for (i=0; i < albumTrack.length; i++){
-//             console.log("Artist: " + albumTrack[i].artists[i].name);
-//             console.log("Album Title: " + albumTrack[i].album.name);
-//             console.log("Spotify Link: " + albumTrack[i].preview_url);
-//             console.log("Track Title: " + albumTrack[i].name);
-//             }
-//         });
-//     } else if (command === "do-what-it-says") {
-//         fs.readFile("random.txt", "utf8", function(error, data) {
-
-//             // If the code experiences any errors it will log the error to the console.
-//             if (error) {
-//               return console.log(error);
-//             }  
-//             // Then split it by commas (to make it more readable)
-//             var dataArr = data.split(",");
-//             command = dataArr[0];
-//             userInput = dataArr[1];
-//             liri();
-//           });
-          
-//     }
-// }
-
-// liri();
