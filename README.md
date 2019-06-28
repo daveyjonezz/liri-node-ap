@@ -13,7 +13,7 @@ The possible command prompts include: **movie-this**, **concert-this**, **spotif
 * For do-what-it-says, the user will need to edit the accompanying random.txt file using the formatting in the file.
 
 ## Program in Action
-![movie-this John Wick](./assets/images/movie-this John Wick)
+![movie-this John Wick](assets/images/movie-this John Wick.png)
 
 ## Technologies Used
 * Javascript
