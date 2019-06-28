@@ -39,7 +39,7 @@ function OMDb(){
              console.log("Title: " + response.data.Title);
              console.log("Year: " + response.data.Year);
              console.log("Rated: " + response.data.Rated);
-             console.log("Rotton Tomatoes Rating: " + response.data.Ratings[1].Value);
+             console.log("Rotten Tomatoes Rating: " + response.data.Ratings[1].Value);
              console.log("Country Produced: " + response.data.Country);
              console.log("Language: " + response.data.Language);
              console.log("Plot: " + response.data.Plot);
