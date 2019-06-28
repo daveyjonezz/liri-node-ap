@@ -9,7 +9,7 @@ The possible command prompts include: **movie-this**, **concert-this**, **spotif
 
 * For movie-this, the user will need to enter a **movie title**. If no movie title is entered, it will default to Mr. Nobody.
 * For concert-this, the user will need to enter a **band name**. 
-* For spotify-this-song, the user will need to enter a **song title**. If no song is entered, it will defualt to THe Sign.
+* For spotify-this-song, the user will need to enter a **song title**. If no song is entered, it will defualt to The Sign.
 * For do-what-it-says, the user will need to edit the accompanying random.txt file using the format: __command-prompt, related input__.
 
 ## Program in Action
